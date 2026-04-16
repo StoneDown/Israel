@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISRAEL · ACNUDH · Centro de respuestas MUN</title>
+  <style>
+    /* =============================================
+     CSS VARIABLES & RESET
+  ============================================= */
+    :root {
+      --bg: #0b0f1a;
+      --bg2: #111827;
+      --bg3: #1a2235;
+      --card: #16202e;
+      --card-hover: #1e2d42;
+      --border: #2a3a52;
+      --accent: #2563eb;
+      --accent2: #3b82f6;
+      --accent-glow: rgba(37, 99, 235, 0.25);
+      --gold: #f59e0b;
+      --gold-dim: rgba(245, 158, 11, 0.15);
+      --text: #e2e8f0;
+      --text2: #94a3b8;
+      --text3: #64748b;
+      --success: #10b981;
+      --danger: #ef4444;
+      --white: #ffffff;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --font-main: 'Georgia', 'Times New Roman', serif;
+      --font-ui: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .light-mode {
+      --bg: #f0f4f8;
+      --bg2: #e2e8f0;
+      --bg3: #dde3ec;
+      --card: #ffffff;
+      --card-hover: #f8fafc;
+      --border: #cbd5e1;
+      --text: #1e293b;
+      --text2: #475569;
+      --text3: #94a3b8;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
+      --bg2: #dde6f0;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+
+    /* =============================================
+     SCROLLBAR
+  ============================================= */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg2);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 10px;
+    }
+
+    /* =============================================
+     HEADER
+  ============================================= */
+    header {
+      background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 60%, #0f2952 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 1rem;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .flag-icon {
+      width: 36px;
+      height: 24px;
+      border-radius: 3px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .brand-text {
+      line-height: 1.1;
+    }
+
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.03em;
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      color: var(--accent2);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text);
+      border-radius: var(--radius-sm);
+      padding: 0.45rem 0.75rem;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-family: var(--font-ui);
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.13);
+      border-color: var(--accent2);
+      color: var(--white);
+    }
+
+    .icon-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .icon-btn.gold-active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #000;
+    }
+
+    /* =============================================
+     SEARCH BAR
+  ============================================= */
+    .search-wrap {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 1.5rem;
+      position: sticky;
+      top: 64px;
+      z-index: 90;
+    }
+
+    .search-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.55rem 1rem 0.55rem 2.5rem;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-family: var(--font-ui);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .search-box input::placeholder {
+      color: var(--text3);
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text3);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+
+    #search-count {
+      font-size: 0.75rem;
+      color: var(--text3);
+      white-space: nowrap;
+    }
+
+    /* =============================================
+     LAYOUT
+  ============================================= */
+    .main-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 4rem;
+    }
+
+    /* =============================================
+     QUICK NAV TABS
+  ============================================= */
+    .tab-nav {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      padding: 0.45rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: var(--font-ui);
+    }
+
+    .tab-btn:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    /* =============================================
+     SECTION + ACCORDION
+  ============================================= */
+    .section-block {
+      margin-bottom: 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition);
+    }
+
+    .section-block:hover {
+      box-shadow: var(--shadow);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background var(--transition);
+      gap: 0.75rem;
+    }
+
+    .section-header:hover {
+      background: var(--card-hover);
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .section-emoji {
+      font-size: 1.1rem;
+    }
+
+    .section-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .chevron {
+      color: var(--text3);
+      font-size: 0.8rem;
+      transition: transform var(--transition);
+    }
+
+    .section-block.open .chevron {
+      transform: rotate(180deg);
+    }
+
+    .section-body {
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-block.open .section-body {
+      display: block;
+    }
+
+    /* =============================================
+     RESPONSE CARDS
+  ============================================= */
+    .response-card {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+      position: relative;
+    }
+
+    .response-card:last-child {
+      border-bottom: none;
+    }
+
+    .response-card:hover {
+      background: var(--card-hover);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .tag-short {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+
+    .tag-medium {
+      background: rgba(59, 130, 246, 0.15);
+      color: #3b82f6;
+    }
+
+    .tag-bullet {
+      background: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+    }
+
+    .tag-strategy {
+      background: rgba(139, 92, 246, 0.15);
+      color: #8b5cf6;
+    }
+
+    .tag-phrase {
+      background: rgba(6, 182, 212, 0.15);
+      color: #06b6d4;
+    }
+
+    .tag-proposal {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+
+    .tag-attack {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    .action-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text3);
+      border-radius: 6px;
+      padding: 0.3rem 0.5rem;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all var(--transition);
+      font-family: var(--font-ui);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .action-btn:hover {
+      background: var(--bg3);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .action-btn.fav-active {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .action-btn.copied {
+      color: var(--success);
+      border-color: var(--success);
+    }
+
+    .card-question {
+      font-size: 0.78rem;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .card-content {
+      font-size: 0.87rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .card-content ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.35rem;
+    }
+
+    .card-content ul li {
+      padding: 0.2rem 0 0.2rem 1.2rem;
+      position: relative;
+      color: var(--text2);
+      font-size: 0.85rem;
+    }
+
+    .card-content ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+    }
+
+    .highlight {
+      background: rgba(245, 158, 11, 0.3);
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+
+    /* =============================================
+     LIVE DEBATE MODE
+  ============================================= */
+    #live-mode-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      flex-direction: column;
+    }
+
+    #live-mode-overlay.active {
+      display: flex;
+    }
+
+    .live-header {
+      background: linear-gradient(90deg, #0a1628, #0d1f3c);
+      border-bottom: 2px solid var(--accent);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .live-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
+    }
+
+    .live-cat-nav {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .live-cat-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: var(--font-ui);
+      font-weight: 600;
+    }
+
+    .live-cat-btn:hover,
+    .live-cat-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .live-cards-wrap {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0.75rem;
+      align-content: start;
+    }
+
+    .live-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .live-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      border-radius: 3px 0 0 3px;
+    }
+
+    .live-card:hover {
+      background: var(--card-hover);
+      border-color: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .live-card-label {
+      font-size: 0.67rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent2);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .live-card-text {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .live-card-copy {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text3);
+      border-radius: 5px;
+      padding: 0.2rem 0.4rem;
+      font-size: 0.7rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: all var(--transition);
+      font-family: var(--font-ui);
+    }
+
+    .live-card:hover .live-card-copy {
+      opacity: 1;
+    }
+
+    .live-card-copy:hover {
+      color: var(--success);
+      border-color: var(--success);
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    /* =============================================
+     EMPTY STATE
+  ============================================= */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text3);
+    }
+
+    .empty-state .es-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .empty-state p {
+      font-size: 0.88rem;
+    }
+
+    /* =============================================
+     TOAST
+  ============================================= */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--success);
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      z-index: 9999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* =============================================
+     QUICK MODE BANNER
+  ============================================= */
+    .quick-mode-banner {
+      display: none;
+      background: linear-gradient(90deg, var(--accent), #1d4ed8);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    .quick-mode-banner.visible {
+      display: block;
+    }
+
+    /* =============================================
+     RESPONSIVE
+  ============================================= */
+    @media (max-width: 640px) {
+      .header-inner {
+        height: 56px;
+      }
+
+      .brand-title {
+        font-size: 0.82rem;
+      }
+
+      .brand-sub {
+        display: none;
+      }
+
+      .icon-btn span {
+        display: none;
+      }
+
+      .main-wrap {
+        padding: 1rem 0.75rem 4rem;
+      }
+
+      .live-cards-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .tab-nav {
+        gap: 0.3rem;
+      }
+
+      .tab-btn {
+        font-size: 0.72rem;
+        padding: 0.38rem 0.65rem;
+      }
+    }
+
+    /* =============================================
+     ANIMATIONS
+  ============================================= */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-block {
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .response-card {
+      transition: background var(--transition);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast">✓ Copied to clipboard</div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="header-brand">
+        <!-- Israeli flag (SVG inline) -->
+        <div class="flag-icon">
+          <svg viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg" width="36" height="24">
+            <rect width="36" height="24" fill="white" />
+            <rect y="4" width="36" height="4" fill="#0038b8" />
+            <rect y="16" width="36" height="4" fill="#0038b8" />
+            <!-- Star of David simplified -->
+            <polygon points="18,9 20.6,13.5 15.4,13.5" fill="none" stroke="#0038b8" stroke-width="0.8" />
+            <polygon points="18,15 15.4,10.5 20.6,10.5" fill="none" stroke="#0038b8" stroke-width="0.8" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Estado de Israel</div>
+          <div class="brand-sub">ACNUDH· Centro de respuestas MUN</div>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <button class="icon-btn" id="btn-quick" onclick="toggleQuickMode()" title="Quick Mode">
+          ⚡ <span>Quick</span>
+        </button>
+        <button class="icon-btn" id="btn-favs" onclick="toggleFavsOnly()" title="Favorites">
+          ⭐ <span>Favs</span>
+        </button>
+        <button class="icon-btn" id="btn-live" onclick="openLiveMode()" title="Live Debate">
+          🔴 <span>Live</span>
+        </button>
+        <button class="icon-btn" id="btn-theme" onclick="toggleTheme()" title="Toggle Theme">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- QUICK MODE BANNER -->
+  <div class="quick-mode-banner" id="quick-banner">⚡ QUICK MODE — mostrando solo respuestas concisas</div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <div class="search-inner">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search arguments, phrases, strategies…"
+          oninput="handleSearch(this.value)">
+      </div>
+      <span id="search-count"></span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrap">
+
+    <a href="https://chatgpt.com/c/69dc0cf7-f104-83e9-92e6-5f3f09ed776b" target="_blank" id="chatgpt-btn">
+      💬 Asistente
+    </a>
+
+    <style>
+      #chatgpt-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #111;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        z-index: 9999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      #chatgpt-btn:hover {
+        background: #333;
+      }
+    </style>
+
+    <!-- QUICK NAVIGATION -->
+    <div class="tab-nav" id="tab-nav">
+      <button class="tab-btn active" onclick="scrollToSection('all')">Todos</button>
+      <button class="tab-btn" onclick="scrollToSection('attacks')">🛡 Ataques</button>
+      <button class="tab-btn" onclick="scrollToSection('responses')">💬 Respuestas</button>
+      <button class="tab-btn" onclick="scrollToSection('strategies')">⚔ Estrategias</button>
+      <button class="tab-btn" onclick="scrollToSection('phrases')">📜 Frases</button>
+      <button class="tab-btn" onclick="scrollToSection('proposals')">🌐 Propuestas</button>
+    </div>
+
+    <!-- SECTIONS CONTAINER -->
+    <div id="sections-container">
+
+      <!-- ==============================
+         SECTION 1: ATTACKS
+    ================================ -->
+      <div class="section-block" id="section-attacks" data-section="attacks">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-label">
+            <span class="section-emoji">🛡</span>
+            Acusaciones comunes contra Israel
+          </div>
+          <div class="section-meta">
+            <span class="badge">5 topicos</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+        <div class="section-body">
+
+          <!-- 1.1 -->
+          <div class="response-card" data-tags="fuerza excesiva uso de la fuerza excessive force proportionality">
+            <div class="card-top">
+              <span class="card-tag tag-attack">Topico de ataque</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Uso excesivo de fuerza / Accion militar desproporcionada</div>
+            <div class="card-content">
+              El Estado de Israel rechaza la caracterización de uso excesivo de la fuerza. El principio de
+              proporcionalidad, conforme al derecho internacional humanitario, no se basa en una equivalencia numérica
+              de daños, sino en la relación entre la ventaja militar concreta y el posible daño civil.
+
+              En este sentido, el Estado de Israel enfrenta amenazas de actores armados no estatales que operan
+              deliberadamente desde zonas civiles, lo que complejiza la aplicación de estos principios.
+
+              No obstante, todas las operaciones están sujetas a evaluación legal previa y medidas activas para
+              minimizar daños a la población civil.
+            </div>
+          </div>
+
+          <!-- 1.2 -->
+          <div class="response-card" data-tags="derechos humanos human rights violations occupation">
+            <div class="card-top">
+              <span class="card-tag tag-attack">Topico de ataque</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Violaciones a los DDHH / Condiciones de ocupación</div>
+            <div class="card-content">
+              El Estado de Israel reconoce la importancia de los derechos humanos como un pilar fundamental. Sin
+              embargo, subraya que las medidas adoptadas responden a necesidades de seguridad frente a amenazas reales y
+              no constituyen acciones arbitrarias.
+
+              Estas medidas están sujetas a revisión judicial independiente y a controles legales internos, lo que
+              garantiza su legalidad y proporcionalidad.
+
+              El Estado de Israel reitera que la protección de los derechos humanos y la seguridad de su población deben
+              ser abordadas de manera equilibrada.
+            </div>
+          </div>
+
+          <!-- 1.3 -->
+          <div class="response-card"
+            data-tags="consejo derechos humanos human rights council bias selectividad selectivity">
+            <div class="card-top">
+              <span class="card-tag tag-attack">Topico de ataque</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">La resistencia del Estado de Israel a la supervisión de la ACNUDH</div>
+            <div class="card-content">
+              El Estado de Israel participa activamente en mecanismos internacionales como el Examen Periódico
+              Universal, demostrando su disposición al escrutinio internacional.
+
+              No obstante, considera que la efectividad de estos mecanismos depende de su imparcialidad, objetividad y
+              aplicación universal.
+
+              Por ello, el Estado de Israel coopera con aquellos procesos que respetan estos principios y rechaza
+              únicamente enfoques selectivos que puedan socavar la credibilidad del sistema internacional.
+            </div>
+          </div>
+
+          <!-- 1.4 -->
+          <div class="response-card" data-tags="protest protesters repression represion demonstrations">
+            <div class="card-top">
+              <span class="card-tag tag-attack">Topico de ataque</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Represión contra manifestantes / Libertad de asamblea</div>
+            <div class="card-content">
+              El Estado de Israel reconoce y protege el derecho a la protesta pacífica como un elemento esencial de toda
+              democracia.
+
+              Sin embargo, distingue entre manifestaciones pacíficas y situaciones en las que actores violentos se
+              infiltran en concentraciones civiles, generando amenazas reales e inminentes.
+
+              En estos casos, el uso de la fuerza se rige estrictamente por los principios de necesidad y
+              proporcionalidad, con el objetivo de proteger tanto a los manifestantes pacíficos como al resto de la
+              población.
+            </div>
+          </div>
+
+          <!-- 1.5 -->
+          <div class="response-card" data-tags="hamas hezbollah non state actors actores no estatales terrorism">
+            <div class="card-top">
+              <span class="card-tag tag-attack">Topico de ataque</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Relaciones con actores armados no estatales</div>
+            <div class="card-content">
+              El Estado de Israel aplica el principio de distinción conforme al derecho internacional humanitario,
+              diferenciando entre combatientes y población civil.
+
+              No obstante, enfrenta un desafío particular cuando actores armados no estatales operan deliberadamente
+              desde zonas civiles, utilizando infraestructura protegida con fines militares.
+
+              Esta realidad no elimina las obligaciones del Estado de Israel, pero sí complejiza significativamente su
+              cumplimiento en el terreno.
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /section-attacks -->
+
+      <!-- ==============================
+         SECTION 2: RESPONSES
+    ================================ -->
+      <div class="section-block" id="section-responses" data-section="responses">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-label">
+            <span class="section-emoji">💬</span>
+            Respuestas principales
+          </div>
+          <div class="section-meta">
+            <span class="badge">12 tarjetas</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+        <div class="section-body">
+
+          <!-- SHORT RESPONSES -->
+          <div class="response-card" data-quick="true"
+            data-tags="self defense autodefensa right proportionality fuerza force">
+            <div class="card-top">
+              <span class="card-tag tag-short">Corto · 1–2 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">En uso de fuerza / proporcionalidad</div>
+            <div class="card-content">
+              El Estado de Israel ejerce su derecho inherente a la legítima defensa conforme al artículo 51 de la Carta
+              de la ONU, aplicando principios de necesidad, proporcionalidad y medidas activas de precaución bajo el
+              derecho internacional humanitario.
+            </div>
+          </div>
+
+          <div class="response-card" data-quick="true" data-tags="human shields hamas civiles civilians shields">
+            <div class="card-top">
+              <span class="card-tag tag-short">Corto · 1–2 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Sobre las bajas civiles</div>
+            <div class="card-content">
+              El Estado de Israel lamenta toda pérdida de vida civil. Sin embargo, enfrenta situaciones en las que
+              actores armados no estatales operan desde infraestructura civil, lo que complejiza la protección efectiva
+              de la población. Aun así, se aplican medidas constantes para minimizar daños.
+            </div>
+          </div>
+
+          <div class="response-card" data-quick="true" data-tags="democracy democracia judicial courts supreme court">
+            <div class="card-top">
+              <span class="card-tag tag-short">Corto · 1–2 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Sobre el estado de derecho y la rendición de cuentas</div>
+            <div class="card-content">
+              El Estado de Israel cuenta con un sistema judicial independiente, incluido un Tribunal Supremo que ejerce
+              control efectivo sobre las acciones del gobierno, garantizando la rendición de cuentas.
+            </div>
+          </div>
+
+          <div class="response-card" data-quick="true" data-tags="democracy democracia judicial courts supreme court">
+            <div class="card-top">
+              <span class="card-tag tag-short">Corto · 1–2 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Protesta vs Violencia</div>
+            <div class="card-content">
+              El Estado de Israel distingue claramente entre el ejercicio legítimo de la protesta pacífica y situaciones
+              en las que actores violentos instrumentalizan dichas manifestaciones. La protección de la libertad de
+              expresión no puede extenderse a actos que representen amenazas reales contra la seguridad.
+            </div>
+          </div>
+
+          <!-- MEDIUM RESPONSES -->
+          <div class="response-card" data-tags="OHCHR bias selectividad agenda politica political agenda">
+            <div class="card-top">
+              <span class="card-tag tag-medium">Medio · 3–4 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Sobre la supervisión de la ACNUDH para los Derechos Humanos y la selectividad del
+              Consejo</div>
+            <div class="card-content">
+              El Estado de Israel reconoce la importancia de la rendición de cuentas internacional. No obstante,
+              considera que la credibilidad del sistema depende de su imparcialidad y aplicación universal.
+
+              Por ello, coopera con mecanismos que operan bajo estos principios y expresa preocupación frente a enfoques
+              selectivos que puedan debilitar la confianza en el sistema.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="OHCHR bias selectividad agenda politica political agenda">
+            <div class="card-top">
+              <span class="card-tag tag-medium">Medio · 3–4 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Protesta vs Violencia</div>
+            <div class="card-content">
+              El Estado de Israel reafirma que el derecho a la protesta pacífica es fundamental en toda sociedad
+              democrática. No obstante, subraya que este derecho pierde su carácter protegido cuando es
+              instrumentalizado por actores violentos que generan amenazas concretas e inminentes. En estos contextos,
+              la actuación estatal no se dirige contra la protesta en sí, sino contra conductas que ponen en riesgo la
+              vida y la seguridad pública.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="humanitarian aid Gaza blockade bloqueo ayuda humanitaria">
+            <div class="card-top">
+              <span class="card-tag tag-medium">Medio · 3–4 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">En acceso humanitario / Gaza</div>
+            <div class="card-content">
+              El Estado de Israel facilita el ingreso constante de ayuda humanitaria en coordinación con organizaciones
+              internacionales.
+
+              Sin embargo, la entrega efectiva se ve afectada por la interferencia de actores armados no estatales. Por
+              ello, el Estado de Israel apoya la creación de mecanismos que garanticen que la ayuda llegue directamente
+              a la población civil.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="settlement asentamientos west bank cisjordania international law">
+            <div class="card-top">
+              <span class="card-tag tag-medium">Medio · 3–4 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Sobre los asentamientos / Cisjordania</div>
+            <div class="card-content">
+              El Estado de Israel sostiene que el estatus de los territorios en disputa debe resolverse mediante
+              negociaciones directas, conforme a las resoluciones 242 y 338 del Consejo de Seguridad.
+
+              Las cuestiones de estatus final no deben definirse mediante declaraciones unilaterales, sino a través de
+              un proceso negociado.
+            </div>
+          </div>
+
+          <!-- BULLET POINT RESPONSES -->
+          <div class="response-card" data-tags="key ideas puntos clave bullet arguments accountability mechanisms">
+            <div class="card-top">
+              <span class="card-tag tag-bullet">Puntos clave</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Compromisos de Israel en materia de derechos humanos — argumentos clave</div>
+            <div class="card-content">
+              <ul>
+                <li>Signatario de 9 tratados fundamentales de derechos humanos de la ONU, incluidos el Pacto
+                  Internacional de Derechos Civiles y Políticos (PIDCP) y el Pacto Internacional de Derechos Económicos,
+                  Sociales y Culturales (PIDESC).</li>
+                <li>Participación activa en los ciclos del Examen Periódico Universal.</li>
+                <li>La Corte Suprema resuelve periódicamente las peticiones presentadas por residentes palestinos.</li>
+                <li>El Abogado General Militar de las FDI investiga las presuntas violaciones cometidas por las fuerzas
+                  israelíes.</li>
+                <li>El historial de derechos humanos del Estado de Israel debe evaluarse en el contexto integral de la
+                  seguridad,
+                  no de forma aislada.</li>
+                <li>La designación de Hamás como organización terrorista por la UE, EE. UU. y otros países es relevante
+                  desde el punto de vista legal y fáctico.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="response-card" data-quick="true"
+            data-tags="security threat amenaza terrorismo terrorism rockets cohetes">
+            <div class="card-top">
+              <span class="card-tag tag-short">Corto · 1–2 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">En el contexto del terrorismo y la seguridad</div>
+            <div class="card-content">
+              Ningún Estado puede permanecer pasivo frente a ataques dirigidos contra su población civil. Las medidas de
+              seguridad del Estado de Israel responden a amenazas reales y se aplican conforme al derecho internacional.
+            </div>
+          </div>
+
+          <div class="response-card" data-quick="true"
+            data-tags="peace negotiations negociaciones paz two-state solution two states">
+            <div class="card-top">
+              <span class="card-tag tag-short">Corto · 1–2 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Sobre el proceso de paz / la solución de dos Estados</div>
+            <div class="card-content">
+              El Estado de Israel reafirma su compromiso con una solución negociada de dos Estados que garantice la
+              seguridad y la dignidad de ambos pueblos. Sin embargo, subraya que cualquier avance sostenible requiere
+              condiciones básicas como el reconocimiento del derecho del Estado de Israel a existir y el cese de la
+              incitación a la violencia. La paz duradera no puede imponerse unilateralmente, sino construirse mediante
+              diálogo directo y garantías de seguridad mutua.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="apartheid comparison comparación international court ICJ">
+            <div class="card-top">
+              <span class="card-tag tag-medium">Medio · 3–4 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Sobre la caracterización del "apartheid"</div>
+            <div class="card-content">
+              El Estado de Israel rechaza la caracterización de apartheid por carecer de base jurídica.
+
+              Dentro del Estado de Israel, ciudadanos de diversas comunidades participan en instituciones políticas,
+              judiciales y públicas, lo que refleja un sistema basado en derechos civiles y participación democrática.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="detention administrativo administrative detention prisoners presos">
+            <div class="card-top">
+              <span class="card-tag tag-medium">Medio · 3–4 lines</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">En detención administrativa</div>
+            <div class="card-content">
+              La detención administrativa es un instrumento reconocido en el derecho internacional humanitario en
+              contextos de conflicto armado.
+
+              En el Estado de Israel, estas medidas están sujetas a revisión judicial periódica, y se reconoce la
+              importancia de continuar fortaleciendo las garantías procesales.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="IDF investigation accountability investigacion mecanismos">
+            <div class="card-top">
+              <span class="card-tag tag-bullet">Puntos clave</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Mecanismos de rendición de cuentas: argumentos clave</div>
+            <div class="card-content">
+              <ul>
+                <li>El Cuerpo de Abogados Militares Generales (MAG) de las FDI revisa todos los incidentes
+                  significativos.</li>
+                <li>Evaluaciones independientes realizadas por la Contraloría y la Fiscalía del Estado.</li>
+                <li>Se ha procesado a los soldados que cometieron violaciones.</li>
+                <li>El Estado de Israel coopera selectivamente con los mecanismos de la ONU que demuestran imparcialidad
+                  procesal.
+                </li>
+                <li>La delegación exige la rendición de cuentas recíproca de los actores armados no estatales.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /section-responses -->
+
+      <!-- ==============================
+         SECTION 3: STRATEGIES
+    ================================ -->
+      <div class="section-block" id="section-strategies" data-section="strategies">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-label">
+            <span class="section-emoji">⚔</span>
+            Estrategias de defensa
+          </div>
+          <div class="section-meta">
+            <span class="badge">9 tácticas</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+        <div class="section-body">
+
+          <div class="response-card" data-quick="true" data-tags="redirect redirigir reframing reencuadre reframe">
+            <div class="card-top">
+              <span class="card-tag tag-strategy">Redirigir ataque</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Redirigir: trasladar el enfoque hacia actores no estatales</div>
+            <div class="card-content">
+              "La delegación acoge con agrado la preocupación de este Comité por el bienestar de la población civil. En
+              ese mismo espíritu de coherencia, invita respetuosamente a las delegaciones a aplicar un escrutinio
+              equivalente a todos los actores involucrados, incluidos aquellos actores armados no estatales que operan
+              desde zonas residenciales, desvían ayuda humanitaria y dirigen ataques contra población civil, en clara
+              contravención del Derecho Internacional Humanitario."
+            </div>
+          </div>
+
+          <div class="response-card" data-quick="true"
+            data-tags="contexto contextualization context security seguridad framing encuadre">
+            <div class="card-top">
+              <span class="card-tag tag-strategy">Contextualizar</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Contextualizar: reconocer + replantear la realidad de seguridad</div>
+            <div class="card-content">
+              "El Estado de Israel no afirma ser perfecto. Ningún Estado lo es. Lo que la delegación solicita es que
+              este órgano
+              aplique el mismo análisis contextual que otorga a otros Estados que enfrentan amenazas de seguridad
+              asimétricas — un análisis que tenga en cuenta el desafío sin precedentes de combatir amenazas armadas
+              integradas en entornos civiles."
+            </div>
+          </div>
+
+          <div class="response-card"
+            data-tags="contraataque diplomatico diplomatic counterattack double standard doble estandar">
+            <div class="card-top">
+              <span class="card-tag tag-strategy">Contraataque diplomático</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Señalar dobles estándares en el ACNUDH</div>
+            <div class="card-content">
+              "Este Comité ha dedicado más resoluciones al Estado de Israel que a delegaciones tales como las de Corea
+              del Norte, Siria e Irán en conjunto. La
+              delegación considera respetuosamente que esta realidad estadística refleja un sesgo estructural
+              incompatible con el principio de universalidad consagrado en la Declaración y Programa de Acción de Viena.
+              La rendición de cuentas selectiva no es rendición de cuentas: es política."
+            </div>
+          </div>
+
+          <div class="response-card"
+            data-tags="neutralizar pregunta dificil difficult question neutralize deflect deflectar">
+            <div class="card-top">
+              <span class="card-tag tag-strategy">Neutralizar pregunta difícil</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Cómo responder a preguntas sesgadas o ambiguas</div>
+            <div class="card-content">
+              "La delegación agradece la pregunta planteada por el distinguido representante. Antes de abordar su
+              contenido, desea aclarar el marco jurídico aplicable, ya que la confusión entre distintos regímenes
+              legales —como el Derecho Internacional Humanitario y el Derecho Internacional de los Derechos Humanos—
+              puede llevar a conclusiones erróneas. Bajo el primero, el estándar aplicable es [X], no [Y] como se
+              sugiere."
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="comparar comparison democracia democracy comparison other states">
+            <div class="card-top">
+              <span class="card-tag tag-strategy">Enfoque comparativo</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Comparar estándares con otras democracias</div>
+            <div class="card-content">
+              "Las reglas de enfrentamiento, la supervisión judicial y la transparencia operativa del Estado de Israel
+              son
+              comparables —e incluso favorables— respecto a varios Estados miembros de la OTAN que han operado en
+              entornos de seguridad similares. La delegación invita a realizar análisis comparativos en lugar de
+              condenas aisladas."
+            </div>
+          </div>
+
+          <div class="response-card" data-quick="true"
+            data-tags="procedural point of order orden procedimiento rulings chair">
+            <div class="card-top">
+              <span class="card-tag tag-strategy">Movimiento procedimental</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Punto de orden para romper el ritmo</div>
+            <div class="card-content">
+              "Punto de orden, honorable mesa. La intervención anterior contiene afirmaciones que la delegación
+              considera no fundamentadas y potencialmente perjudiciales para el desarrollo del debate. Se solicita
+              recordar a las delegaciones la obligación de basarse en fuentes verificadas."
+            </div>
+          </div>
+
+          <div class="response-card"
+            data-tags="información information request request clarify aclaración clarificacion">
+            <div class="card-top">
+              <span class="card-tag tag-strategy">Solicitar información / ganar tiempo</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Solicitar fuente para reducir presión</div>
+            <div class="card-content">
+              "La delegación solicita respetuosamente al distinguido delegado que precise la fuente primaria de dicha
+              afirmación, ya que las cifras mencionadas difieren de la información disponible. La precisión es
+              fundamental para la credibilidad de este Comité."
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="coalition aliados allies support blocs voting">
+            <div class="card-top">
+              <span class="card-tag tag-strategy">Construir coalición</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Identificar intereses comunes</div>
+            <div class="card-content">
+              Buscar coincidencias con: (1) Estados que enfrenten conflictos asimétricos; (2) Estados críticos del sesgo
+              institucional; (3) Estados con relaciones tecnológicas o comerciales. Formular propuestas basadas en
+              principios universales.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="concede acknowledge reconocer credibility credibilidad">
+            <div class="card-top">
+              <span class="card-tag tag-strategy">Concesión estratégica</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Cuándo conceder parcialmente</div>
+            <div class="card-content">
+              "La delegación no ignora las preocupaciones humanitarias planteadas. De hecho, la propia sociedad civil,
+              la prensa libre y el sistema judicial israelí han abordado estos temas, lo que evidencia un sistema
+              democrático funcional. La diferencia radica entre la crítica constructiva y la condena politizada."
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==============================
+         SECTION 4: PHRASES
+    ================================ -->
+      <div class="section-block" id="section-phrases" data-section="phrases">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-label">
+            <span class="section-emoji">📜</span>
+            Frases diplomáticas y lenguaje ONU
+          </div>
+          <div class="section-meta">
+            <span class="badge">16 frases</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+        <div class="section-body">
+
+          <!-- APERTURA -->
+          <div class="response-card" data-quick="true" data-tags="opening phrase frase apertura opener formal">
+            <div class="card-top">
+              <span class="card-tag tag-phrase">Apertura</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Frases de apertura</div>
+            <div class="card-content">
+              <ul>
+                <li>"La delegación de Israel agradece a la honorable mesa por concederle la palabra."</li>
+                <li>"El Estado de Israel toma la palabra para referirse a la intervención realizada por el distinguido
+                  delegado de
+                  [X]."</li>
+                <li>"La delegación desea dejar constancia de su firme posición sobre este asunto."</li>
+                <li>"El Estado de Israel hace uso de su derecho de réplica."</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ÉNFASIS -->
+          <div class="response-card" data-quick="true"
+            data-tags="emphasis connector conectores emphasize conectar linking">
+            <div class="card-top">
+              <span class="card-tag tag-phrase">Énfasis</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Conectores de énfasis</div>
+            <div class="card-content">
+              <ul>
+                <li>"La delegación desea enfatizar que…"</li>
+                <li>"El Estado de Israel subraya la importancia de…"</li>
+                <li>"Es la posición considerada de esta delegación que…"</li>
+                <li>"La delegación debe dejar constancia de su firme rechazo a…"</li>
+                <li>"El Estado de Israel llama la atención de este Comité sobre el hecho de que…"</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- DESACUERDO -->
+          <div class="response-card" data-tags="disagree desacuerdo reject rechazo firm firm position">
+            <div class="card-top">
+              <span class="card-tag tag-phrase">Desacuerdo</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Expresar desacuerdo firme</div>
+            <div class="card-content">
+              <ul>
+                <li>"La delegación no puede asociarse con la posición presentada por…"</li>
+                <li>"El Estado de Israel rechaza categóricamente la caracterización expuesta por el distinguido
+                  delegado."</li>
+                <li>"La delegación observa con preocupación la interpretación selectiva del derecho internacional
+                  presentada."</li>
+                <li>"Tales afirmaciones carecen de fundamento fáctico y jurídico."</li>
+                <li>"La delegación se reserva plenamente su derecho de réplica ante tales alegaciones infundadas."</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- APOYO -->
+          <div class="response-card" data-tags="support acuerdo agree endorse welcome bienvenida">
+            <div class="card-top">
+              <span class="card-tag tag-phrase">Apoyo / Acuerdo</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Expresar apoyo o construir alianzas</div>
+            <div class="card-content">
+              <ul>
+                <li>"El Estado de Israel se alinea con la posición expresada por el distinguido delegado de [X]."</li>
+                <li>"La delegación acoge esta iniciativa como un paso hacia la rendición de cuentas universal."</li>
+                <li>"El Estado de Israel se asocia con la declaración realizada en nombre de [bloque/grupo]."</li>
+                <li>"La delegación reconoce el espíritu de cooperación demostrado por…"</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- REFERENCIAS LEGALES -->
+          <div class="response-card"
+            data-tags="legal citation derecho internacional international law reference charter">
+            <div class="card-top">
+              <span class="card-tag tag-phrase">Referencias legales</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Citas legales clave</div>
+            <div class="card-content">
+              <ul>
+                <li>"…según lo establecido en el Artículo 51 de la Carta de las Naciones Unidas…"</li>
+                <li>"…de conformidad con el derecho internacional humanitario consuetudinario…"</li>
+                <li>"…bajo el marco de la Resolución 1373 del Consejo de Seguridad de la ONU…"</li>
+                <li>"…de acuerdo con los principios de distinción, proporcionalidad y precaución…"</li>
+                <li>"…como lo ha afirmado la Corte Internacional de Justicia en su opinión consultiva sobre…"</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- CIERRE -->
+          <div class="response-card" data-quick="true" data-tags="closing cierre conclude conclusion finalizar">
+            <div class="card-top">
+              <span class="card-tag tag-phrase">Cierre</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Cerrar una intervención</div>
+            <div class="card-content">
+              <ul>
+                <li>"La delegación insta a este Comité a actuar conforme a su mandato."</li>
+                <li>"El Estado de Israel está dispuesto a participar en un diálogo constructivo basado en hechos
+                  verificables y rigor
+                  jurídico."</li>
+                <li>"La delegación agradece al Comité por su atención y cede la palabra."</li>
+                <li>"El Estado de Israel reafirma su compromiso con los principios de la Carta de la ONU y la
+                  universalidad de los
+                  derechos humanos."</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PROCEDIMIENTO -->
+          <div class="response-card"
+            data-tags="procedural procedimiento point of order information right reply derecho replica">
+            <div class="card-top">
+              <span class="card-tag tag-phrase">Lenguaje procedimental</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Mociones y puntos procedimentales</div>
+            <div class="card-content">
+              <ul>
+                <li>"Punto de orden, honorable mesa…"</li>
+                <li>"Derecho de réplica — El Estado de Israel toma la palabra para responder a imprecisiones…"</li>
+                <li>"Punto de información — la delegación solicita aclaración sobre…"</li>
+                <li>"Moción para archivar la enmienda propuesta por el delegado de [X]…"</li>
+                <li>"La delegación solicita votación registrada sobre esta cláusula."</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==============================
+         SECTION 5: PROPOSALS
+    ================================ -->
+      <div class="section-block" id="section-proposals" data-section="proposals">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-label">
+            <span class="section-emoji">🌐</span>
+            Propuestas del país
+          </div>
+          <div class="section-meta">
+            <span class="badge">6 propuestas</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+        <div class="section-body">
+
+          <div class="response-card" data-quick="true"
+            data-tags="tecnologia camaras corporales body cameras BWC policia">
+            <div class="card-top">
+              <span class="card-tag tag-proposal">Propuesta · Tecnología</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Uso obligatorio de cámaras corporales en fuerzas del orden</div>
+            <div class="card-content">
+              El Estado de Israel propone la adopción de directrices internacionales sobre el uso obligatorio de cámaras
+              corporales
+              (BWC)
+              por parte de fuerzas del orden y unidades de policía militar en zonas civiles como medida de prevención
+              del uso excesivo de la fuerza. Esta tecnología proporciona
+              documentación verificable e imparcial de los incidentes, fortalece la rendición de cuentas y protege tanto
+              a
+              civiles como a oficiales. El Estado de Israel ha implementado programas piloto de BWC y está dispuesto a
+              compartir su
+              experiencia técnica con Estados interesados mediante marcos de cooperación bilateral.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="cooperacion internacional compartir experiencia asistencia tecnica">
+            <div class="card-top">
+              <span class="card-tag tag-proposal">Propuesta · Cooperación</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Cooperación técnica internacional en mecanismos de rendición de cuentas</div>
+            <div class="card-content">
+              El Estado de Israel propone el establecimiento de un mecanismo voluntario de revisión entre pares bajo los
+              auspicios
+              del
+              ACNUDH respetando la soberanía de los Estados, mediante el cual los Estados puedan compartir buenas
+              prácticas sobre sistemas de justicia militar,
+              protocolos de mitigación de daño a civiles y marcos de investigación interna. El sistema del Abogado
+              General
+              Militar del Estado de Israel ha desarrollado una jurisprudencia significativa en el cumplimiento del
+              derecho
+              internacional
+              humanitario y está dispuesto a participar en estos intercambios.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="uso de fuerza regulacion normas estandares policia">
+            <div class="card-top">
+              <span class="card-tag tag-proposal">Propuesta · Estándares</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Actualización de estándares internacionales sobre el uso de la fuerza</div>
+            <div class="card-content">
+              El Estado de Israel apoya el desarrollo de directrices actualizadas y operativamente realistas sobre el
+              uso de la
+              fuerza en
+              entornos de seguridad complejos, especialmente aquellos que involucran actores armados no estatales dentro
+              de
+              poblaciones civiles. Los Principios Básicos de la ONU sobre el Uso de la Fuerza (1990) no abordan
+              adecuadamente los contextos de guerra asimétrica por lo que requieren adaptarse. El Estado de Israel insta
+              al ACNUDH a convocar un grupo
+              de expertos
+              técnicos para abordar esta brecha.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="ayuda humanitaria mecanismo verificacion distribucion">
+            <div class="card-top">
+              <span class="card-tag tag-proposal">Propuesta · Humanitaria</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Mecanismo independiente de verificación de ayuda humanitaria</div>
+            <div class="card-content">
+              El Estado de Israel propone la creación de un mecanismo independiente supervisado por la ONU para
+              verificar que la
+              ayuda
+              humanitaria en zonas de conflicto llegue a la población civil y no sea desviada por actores armados no
+              estatales. Este
+              mecanismo permitiría abordar directamente casos documentados de desvío de ayuda por parte de actores no
+              estatales, al tiempo que garantizaría que los esfuerzos de facilitación de ayuda por parte del Estado de
+              Israel sean
+              registrados y reconocidos de manera precisa.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="definicion actores armados no estatales marco legal">
+            <div class="card-top">
+              <span class="card-tag tag-proposal">Propuesta · Marco Jurídico</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Definición integral de actores armados no estatales</div>
+            <div class="card-content">
+              El Estado de Israel reitera la necesidad de avanzar hacia un marco internacional claro que defina y regule
+              la actuación
+              de
+              actores armados no estatales. La ausencia de una definición precisa permite que este tipo de actores
+              aprovechen
+              ambigüedades legales para evadir responsabilidades. El Estado de Israel insta a este organismo a priorizar
+              el
+              desarrollo de
+              estándares jurídicos que fortalezcan la rendición de cuentas de todos los actores involucrados en
+              conflictos.
+            </div>
+          </div>
+
+          <div class="response-card" data-tags="dialogo negociaciones bilaterales paz">
+            <div class="card-top">
+              <span class="card-tag tag-proposal">Propuesta · Proceso de paz</span>
+              <div class="card-actions">
+                <button class="action-btn" onclick="toggleFav(this)">⭐</button>
+                <button class="action-btn" onclick="copyCard(this)">📋 Copy</button>
+              </div>
+            </div>
+            <div class="card-question">Compromiso renovado con negociaciones bilaterales directas (secundario)</div>
+            <div class="card-content">
+              El Estado de Israel reafirma su compromiso con una solución negociada del conflicto basada en resoluciones
+              relevantes
+              del
+              Consejo de Seguridad de la ONU. La delegación propone que este Comité respalde un llamado a reanudar
+              negociaciones directas sin condiciones previas, reconociendo que la paz sostenible requiere diálogo
+              político y
+              cooperación, en lugar de imposiciones unilaterales.
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /section-proposals -->
+
+    </div><!-- /sections-container -->
+
+    <!-- EMPTY STATE (hidden by default) -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <div class="es-icon">🔍</div>
+      <p>No results found for your search.</p>
+      <p style="margin-top:0.5rem;font-size:0.78rem;">Try different keywords or clear the search field.</p>
+    </div>
+
+  </div><!-- /main-wrap -->
+
+  <!-- ==============================
+     LIVE DEBATE MODE OVERLAY
+================================ -->
+  <div id="live-mode-overlay">
+    <div class="live-header">
+      <div class="live-title">
+        <div class="live-dot"></div>
+        LIVE DEBATE MODE — ACNUDH · Israel
+      </div>
+      <button class="icon-btn" onclick="closeLiveMode()" style="color:white;">✕ Exit</button>
+    </div>
+
+    <div class="live-cat-nav" id="live-cat-nav">
+      <button class="live-cat-btn active" onclick="filterLive('all', this)">Todos</button>
+      <button class="live-cat-btn" onclick="filterLive('short', this)">⚡ Respuestas cortas</button>
+      <button class="live-cat-btn" onclick="filterLive('redirect', this)">↩ Contraargumentos</button>
+      <button class="live-cat-btn" onclick="filterLive('phrase', this)">📜 Frases</button>
+      <button class="live-cat-btn" onclick="filterLive('proposal', this)">🌐 Propuestas</button>
+      <button class="live-cat-btn" onclick="filterLive('fav', this)">⭐ Favoritos</button>
+    </div>
+
+    <div class="live-cards-wrap" id="live-cards-wrap">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- ==============================
+     JAVASCRIPT
+================================ -->
+  <script>
+    // =============================================
+    // STATE
+    // =============================================
+    let quickMode = false;
+    let favsOnly = false;
+    let darkMode = true;
+    let favorites = JSON.parse(localStorage.getItem('mun_favs') || '[]');
+    let currentSearch = '';
+
+    // =============================================
+    // TOGGLE SECTION ACCORDION
+    // =============================================
+    function toggleSection(header) {
+      const block = header.closest('.section-block');
+      block.classList.toggle('open');
+    }
+
+    // =============================================
+    // SCROLL TO SECTION
+    // =============================================
+    function scrollToSection(id) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (id === 'all') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      const el = document.getElementById('section-' + id);
+      if (el) {
+        if (!el.classList.contains('open')) el.classList.add('open');
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // =============================================
+    // SEARCH
+    // =============================================
+    function handleSearch(val) {
+      currentSearch = val.toLowerCase().trim();
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const cards = document.querySelectorAll('.response-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const tags = (card.dataset.tags || '').toLowerCase();
+        const content = card.textContent.toLowerCase();
+        const isQuick = card.dataset.quick === 'true';
+        const cardId = getCardId(card);
+        const isFav = favorites.includes(cardId);
+
+        let show = true;
+
+        // Search filter
+        if (currentSearch && !tags.includes(currentSearch) && !content.includes(currentSearch)) {
+          show = false;
+        }
+
+        // Quick mode filter
+        if (quickMode && !isQuick) show = false;
+
+        // Favs filter
+        if (favsOnly && !isFav) show = false;
+
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+
+        // Highlight search term
+        if (currentSearch && show) highlightText(card, currentSearch);
+        else removeHighlight(card);
+      });
+
+      // Show/hide sections based on visible cards
+      document.querySelectorAll('.section-block').forEach(block => {
+        const hasVisible = Array.from(block.querySelectorAll('.response-card')).some(c => c.style.display !== 'none');
+        block.style.display = (currentSearch || quickMode || favsOnly) ? (hasVisible ? '' : 'none') : '';
+      });
+
+      // Empty state
+      const empty = document.getElementById('empty-state');
+      empty.style.display = visible === 0 ? '' : 'none';
+
+      // Count
+      const count = document.getElementById('search-count');
+      count.textContent = currentSearch ? `${visible} result${visible !== 1 ? 's' : ''}` : '';
+    }
+
+    function highlightText(card, term) {
+      // Simple class-based highlight on card-content paragraphs
+      const contents = card.querySelectorAll('.card-content');
+      contents.forEach(el => {
+        const raw = el.innerHTML.replace(/<mark class="highlight">|<\/mark>/g, '');
+        const regex = new RegExp(`(${escapeRegex(term)})`, 'gi');
+        el.innerHTML = raw.replace(regex, '<mark class="highlight">$1</mark>');
+      });
+    }
+
+    function removeHighlight(card) {
+      const contents = card.querySelectorAll('.card-content');
+      contents.forEach(el => {
+        el.innerHTML = el.innerHTML.replace(/<mark class="highlight">|<\/mark>/g, '');
+      });
+    }
+
+    function escapeRegex(s) {
+      return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // =============================================
+    // QUICK MODE
+    // =============================================
+    function toggleQuickMode() {
+      quickMode = !quickMode;
+      const btn = document.getElementById('btn-quick');
+      const banner = document.getElementById('quick-banner');
+      btn.classList.toggle('active', quickMode);
+      banner.classList.toggle('visible', quickMode);
+      applyFilters();
+    }
+
+    // =============================================
+    // FAVS MODE
+    // =============================================
+    function toggleFavsOnly() {
+      favsOnly = !favsOnly;
+      const btn = document.getElementById('btn-favs');
+      btn.classList.toggle('gold-active', favsOnly);
+      applyFilters();
+    }
+
+    // =============================================
+    // FAVORITES
+    // =============================================
+    function getCardId(card) {
+      const q = card.querySelector('.card-question');
+      return q ? q.textContent.trim().slice(0, 40) : Math.random().toString();
+    }
+
+    function toggleFav(btn) {
+      const card = btn.closest('.response-card');
+      const id = getCardId(card);
+      const idx = favorites.indexOf(id);
+      if (idx === -1) {
+        favorites.push(id);
+        btn.classList.add('fav-active');
+        btn.textContent = '★';
+      } else {
+        favorites.splice(idx, 1);
+        btn.classList.remove('fav-active');
+        btn.textContent = '⭐';
+      }
+      localStorage.setItem('mun_favs', JSON.stringify(favorites));
+      if (favsOnly) applyFilters();
+    }
+
+    function initFavButtons() {
+      document.querySelectorAll('.response-card').forEach(card => {
+        const id = getCardId(card);
+        if (favorites.includes(id)) {
+          const btn = card.querySelector('.action-btn');
+          if (btn) {
+            btn.classList.add('fav-active');
+            btn.textContent = '★';
+          }
+        }
+      });
+    }
+
+    // =============================================
+    // COPY
+    // =============================================
+    function copyCard(btn) {
+      const card = btn.closest('.response-card');
+      const question = card.querySelector('.card-question')?.textContent.trim() || '';
+      const content = card.querySelector('.card-content')?.innerText.trim() || '';
+      const text = question ? `${question}\n\n${content}` : content;
+
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = '✓ Copied';
+        showToast('Response copied to clipboard');
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = orig;
+        }, 1800);
+      });
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = '✓ ' + msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    // =============================================
+    // THEME
+    // =============================================
+    function toggleTheme() {
+      darkMode = !darkMode;
+      document.body.classList.toggle('light-mode', !darkMode);
+      document.getElementById('btn-theme').textContent = darkMode ? '🌙' : '☀️';
+    }
+
+    // =============================================
+    // LIVE MODE
+    // =============================================
+    const LIVE_ITEMS = [
+      // Respuestas cortas
+      { cat: 'short', label: 'Autodefensa (Art. 51)', text: 'El Estado de Israel ejerce su derecho inherente a la autodefensa conforme al Artículo 51 de la Carta de la ONU. Todas sus operaciones cumplen con las obligaciones de precaución del derecho internacional humanitario.' },
+      { cat: 'short', label: 'Víctimas civiles', text: 'Las víctimas civiles derivan del uso sistemático de infraestructura civil con fines militares por parte de actores armados no estatales, lo cual constituye una violación del derecho internacional y desplaza la responsabilidad jurídica.' },
+      { cat: 'short', label: 'Estado de derecho', text: 'El poder judicial independiente del Estado de Israel —incluyendo un Tribunal Supremo que ha fallado en contra del gobierno— demuestra un sistema funcional de rendición de cuentas democrática.' },
+      { cat: 'short', label: 'Contexto de seguridad', text: 'Ningún Estado democrático puede permanecer pasivo ante ataques indiscriminados dirigidos contra su población civil. Las medidas de seguridad adoptadas son proporcionales y tienen base legal.' },
+      { cat: 'short', label: 'Solución de dos Estados', text: 'El Estado de Israel mantiene su compromiso con una solución negociada de dos Estados, condicionada al reconocimiento de su derecho a existir y al cese de actos de incitación.' },
+      // Redirecciones
+      { cat: 'redirect', label: 'Redirigir → Responsabilidad de actores no estatales', text: 'El Estado de Israel invita a todas las delegaciones a dirigir un escrutinio equivalente hacia los actores armados no estatales que lanzan ataques desde zonas civiles, desvían ayuda humanitaria y atacan a la población civil.' },
+      { cat: 'redirect', label: 'Redirigir → Selectividad del ACNUDH', text: 'Se han adoptado más resoluciones contra Israel que contra Corea del Norte, Siria e Irán en conjunto. Esta selectividad es incompatible con el principio de universalidad de los derechos humanos.' },
+      { cat: 'redirect', label: 'Redirigir → Necesidad de contexto', text: 'El Estado de Israel solicita el mismo análisis contextual que se otorga a otros Estados que enfrentan amenazas de seguridad asimétricas por parte de actores insertados en poblaciones civiles.' },
+      { cat: 'redirect', label: 'Punto de orden', text: 'Punto de orden, honorable mesa. La intervención anterior contiene afirmaciones no verificadas. La delegación solicita el uso de fuentes comprobables.' },
+      { cat: 'redirect', label: 'Aclaración jurídica', text: 'Antes de abordar el fondo, la delegación aclara el marco jurídico aplicable. Confundir el derecho internacional humanitario con el de derechos humanos genera conclusiones erróneas.' },
+      // Frases
+      { cat: 'phrase', label: 'Abrir: Derecho de réplica', text: 'El Estado de Israel hace uso de su derecho de réplica.' },
+      { cat: 'phrase', label: 'Abrir: Posición firme', text: 'La delegación desea dejar constancia de su posición firme sobre este asunto.' },
+      { cat: 'phrase', label: 'Énfasis', text: 'La delegación desea enfatizar que…' },
+      { cat: 'phrase', label: 'Rechazo', text: 'El Estado de Israel rechaza categóricamente la caracterización presentada por el distinguido delegado.' },
+      { cat: 'phrase', label: 'Preocupación', text: 'La delegación observa con preocupación la interpretación selectiva del derecho internacional presentada.' },
+      { cat: 'phrase', label: 'Cierre', text: 'El Estado de Israel está dispuesto a participar constructivamente sobre la base de la precisión fáctica y la integridad jurídica. La delegación cede la palabra.' },
+      // Propuestas
+      { cat: 'proposal', label: 'Cámaras corporales', text: 'El Estado de Israel propone directrices obligatorias para el uso de cámaras corporales en fuerzas del orden en zonas civiles, con asistencia técnica para Estados interesados.' },
+      { cat: 'proposal', label: 'Mecanismo de verificación de ayuda', text: 'El Estado de Israel propone un mecanismo supervisado por la ONU que garantice que la ayuda humanitaria llegue a civiles y no sea desviada por actores armados.' },
+      { cat: 'proposal', label: 'Marco sobre actores no estatales', text: 'El Estado de Israel impulsa el desarrollo de un marco internacional claro que regule la actuación y responsabilidad de actores armados no estatales.' },
+      { cat: 'proposal', label: 'Revisión entre pares', text: 'El Estado de Israel propone un mecanismo voluntario de revisión entre Estados bajo el ACNUDH para compartir buenas prácticas en justicia militar y mitigación de daños a civiles.' },
+    ];
+
+    let currentLiveCat = 'all';
+
+    function openLiveMode() {
+      document.getElementById('live-mode-overlay').classList.add('active');
+      renderLiveCards('all');
+    }
+
+    function closeLiveMode() {
+      document.getElementById('live-mode-overlay').classList.remove('active');
+    }
+
+    function filterLive(cat, btn) {
+      document.querySelectorAll('.live-cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentLiveCat = cat;
+      renderLiveCards(cat);
+    }
+
+    function renderLiveCards(cat) {
+      const wrap = document.getElementById('live-cards-wrap');
+      wrap.innerHTML = '';
+
+      let items = LIVE_ITEMS;
+      if (cat === 'fav') {
+        items = LIVE_ITEMS.filter(i => favorites.includes('live_' + i.label));
+      } else if (cat !== 'all') {
+        items = LIVE_ITEMS.filter(i => i.cat === cat);
+      }
+
+      if (items.length === 0) {
+        wrap.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="es-icon">💬</div><p>No items in this category.</p></div>';
+        return;
+      }
+
+      items.forEach(item => {
+        const isFav = favorites.includes('live_' + item.label);
+        const card = document.createElement('div');
+        card.className = 'live-card';
+        card.innerHTML = `
+        <div class="live-card-label">${item.label}</div>
+        <div class="live-card-text">${item.text}</div>
+        <button class="live-card-copy" onclick="copyLive(this, '${escapeAttr(item.text)}')">📋</button>
+      `;
+        wrap.appendChild(card);
+      });
+    }
+
+    function copyLive(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = '✓';
+        btn.style.color = 'var(--success)';
+        showToast('Copied!');
+        setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 1600);
+      });
+    }
+
+    function escapeAttr(s) {
+      return s.replace(/'/g, "\\'").replace(/\n/g, ' ');
+    }
+
+    // =============================================
+    // INIT
+    // =============================================
+    document.addEventListener('DOMContentLoaded', () => {
+      initFavButtons();
+    });
+
+    // Keyboard shortcut: ESC closes live mode
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLiveMode();
+    });
+  </script>
+
+<style>
+#lockScreen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.lock-box {
+  background: rgba(30, 41, 59, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 35px;
+  border-radius: 16px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  animation: fadeIn 0.6s ease;
+}
+
+.lock-box h2 {
+  color: #e2e8f0;
+  margin-bottom: 10px;
+}
+
+.lock-box p {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.lock-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #0f172a;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.lock-box input::placeholder {
+  color: #64748b;
+}
+
+.lock-box button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lock-box button:hover {
+  opacity: 0.85;
+}
+
+.error-msg {
+  color: #f87171;
+  font-size: 13px;
+  margin-top: 8px;
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+<div id="lockScreen">
+  <div class="lock-box">
+    <h2>Acceso restringido</h2>
+    <p>Ingrese el código para continuar</p>
+    <input type="password" id="passwordInput" placeholder="••••••••">
+    <button onclick="checkPassword()">Entrar</button>
+    <div class="error-msg" id="errorMsg">Código incorrecto</div>
+  </div>
+</div>
+
+<script>
+function checkPassword() {
+  const correctPassword = "piñas123";
+  const input = document.getElementById("passwordInput").value;
+  const errorMsg = document.getElementById("errorMsg");
+
+  if (input === correctPassword) {
+    document.getElementById("lockScreen").style.display = "none";
+  } else {
+    errorMsg.style.display = "block";
+  }
+}
+
+// Enter para enviar
+document.getElementById("passwordInput").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    checkPassword();
+  }
+});
+</script>
+
+</body>
+
+</html>
